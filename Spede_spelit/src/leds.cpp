@@ -10,6 +10,7 @@ void initializeLeds()
   {    
     pinMode(ledList[i], OUTPUT);
   }
+  testLeds();
 }
 
 
@@ -19,7 +20,7 @@ void setLed(uint8_t ledNumber)
 }
 
 
-void clearLED(uint8_t ledNumber)
+void clearLed(uint8_t ledNumber)
 {
   digitalWrite(ledList[ledNumber], LOW);
 }
@@ -45,7 +46,7 @@ void setAllLeds()
 }
 
 
-void led_test()
+void testLeds()
 {
  int i;
   for(i=0;i<sizeof(ledList);i++)
