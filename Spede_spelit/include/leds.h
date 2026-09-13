@@ -32,6 +32,11 @@ void clearAllLeds(void);
 void setAllLeds(void);
 
 /*
+  clears the correct led number 0-3
+*/
+void clearLed( uint8_t ledNumber);
+
+/*
   show1() subroutine shows numbers 0,1,...,15 as binary numbers
   waits a bit and repeats number "show"
 */
@@ -47,5 +52,10 @@ void show1(void);
               is shown. 
 */
 void show2(int);
+
+/*
+testLeds tests that leds are working
+*/
+void testLeds();
 
 #endif
