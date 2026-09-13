@@ -6,7 +6,10 @@ const uint8_t ledList[]={A2, A3, A4, A5};
 void initializeLeds()
 {
   int i;
-  for(i=0; i<sizeof(ledList);i++)
+  int numberOfLeds =0;
+  numberOfLeds=sizeof(ledList);
+  
+  for(i=0; i<numberOfLeds;i++)
   {    
     pinMode(ledList[i], OUTPUT);
   }
@@ -29,7 +32,10 @@ void clearLed(uint8_t ledNumber)
 void clearAllLeds()
 {
   int i;
-  for(i=0;i<sizeof(ledList);i++)
+  int numberOfLeds =0;
+  numberOfLeds=sizeof(ledList);
+  
+  for(i=0; i<numberOfLeds;i++)
   {
     digitalWrite(ledList[i], LOW);
   }
@@ -39,35 +45,38 @@ void clearAllLeds()
 void setAllLeds()
 {
   int i;
-  for(i=0;i<sizeof(ledList);i++)
+  int numberOfLeds =0;
+  numberOfLeds=sizeof(ledList);
+  
+  for(i=0; i<numberOfLeds;i++)
   {
     digitalWrite(ledList[i], HIGH);
   }
 }
 
 
-void testLeds()
+void testLeds(uint8_t numberOfLeds)
 {
  int i;
-  for(i=0;i<sizeof(ledList);i++)
+  int delayTime=200;
+  
+  for(i=0;i<numberOfLeds;i++)
   {
-    setLed(0);
-    delay(500);
-    setLed(1);
-    delay(500);
-    setLed(2);
-    delay(500);
-    setLed(3);
-    clearAllLeds();
-    delay(500);
-    setAllLeds();
-    delay(200);
-    clearAllLeds();
-    setAllLeds();
-    delay(200);
-    clearAllLeds();
-    
+    setLed(i);
+    delay(delayTime);
   }
+
+  
+
+  for(i=1; i<=2; i++)
+  {
+    clearAllLeds();
+    delay(delayTime);
+    setAllLeds();
+    delay(delayTime);
+  }
+  
+  clearAllLeds();
 
 }
 
@@ -108,16 +117,19 @@ void show2(int rounds)
   int i=0;
   int j=0;
   int delayTime=500;
+  int numberOfLeds =0;
+  numberOfLeds=sizeof(ledList);
 
   for(i=1; i<=rounds;i++)
   {
     clearAllLeds();
-    delay(delayTime/i);
+    delayTime=delayTime/i;
+    delay(delayTime);
 
-    for(j=0;j<sizeof(ledList);j++)
+    for(j=0;j<numberOfLeds;j++)
     {
       digitalWrite(ledList[j], HIGH);
-      delay(delayTime/i);
+      delay(delayTime);
     }
     
   }
