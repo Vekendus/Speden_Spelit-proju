@@ -2,6 +2,11 @@
 
 volatile int pressedButton = 0;
 
+/* 
+hieman parempi koodaustapa voisi olla käyttää const int -muuttujia pinnien määrityksenä,
+sitten viitata muuttujalla pinmodessa.
+*/
+
 void initButtonsAndButtonInterrupts(void)
 {
   // See requirements for this function from buttons.h
@@ -22,6 +27,10 @@ void initButtonsAndButtonInterrupts(void)
 
 ISR(PCINT2_vect)
 {
-
+  /*
+  Käytä booleania, jolla tunnistetaan, että jonkin napin tila on muuttunut.
+  Ota aikaleima millis()-funktiolla. Aikaleiman avulla voidaan pelissä määrittää, onko kyse värähtelystä vai 
+  */
 }
 
+/* Tarkista myös buttons.h lisähuomiot! */
