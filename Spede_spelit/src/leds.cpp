@@ -98,11 +98,11 @@ void show1()
     {
       if(data & mask)
       {
-        digitalWrite(ledList[bitCount], HIGH);
+        setLed(ledList[bitCount]);
       }
       else
       {
-        digitalWrite(ledList[bitCount], LOW);
+        clearLed(ledList[bitCount]);
       }
       bitCount++;
     }
