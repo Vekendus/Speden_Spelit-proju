@@ -128,7 +128,7 @@ void show2(int rounds)
 
     for(j=0;j<numberOfLeds;j++)
     {
-      digitalWrite(ledList[j], HIGH);
+      setLed(ledList[j]);
       delay(delayTime);
     }
     
