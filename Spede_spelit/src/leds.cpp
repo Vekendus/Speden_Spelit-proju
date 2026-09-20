@@ -13,7 +13,7 @@ void initializeLeds()
   {    
     pinMode(ledList[i], OUTPUT);
   }
-  testLeds();
+  testLeds(numberOfLeds);
 }
 
 
@@ -98,11 +98,11 @@ void show1()
     {
       if(data & mask)
       {
-        setLed(ledList[bitCount]);
+        setLed(bitCount);
       }
       else
       {
-        clearLed(ledList[bitCount]);
+        clearLed(bitCount);
       }
       bitCount++;
     }
@@ -119,6 +119,7 @@ void show2(int rounds)
   int delayTime=500;
   int numberOfLeds =0;
   numberOfLeds=sizeof(ledList);
+  
 
   for(i=1; i<=rounds;i++)
   {
@@ -128,7 +129,7 @@ void show2(int rounds)
 
     for(j=0;j<numberOfLeds;j++)
     {
-      setLed(ledList[j]);
+      setLed(j);
       delay(delayTime);
     }
     
