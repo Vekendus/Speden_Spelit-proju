@@ -56,6 +56,6 @@ void show2(int);
 /*
 testLeds tests that leds are working
 */
-void testLeds();
+void testLeds(uint8_t);
 
 #endif
