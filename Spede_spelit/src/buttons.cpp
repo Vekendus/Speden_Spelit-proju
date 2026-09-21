@@ -21,22 +21,19 @@ void initButtonsAndButtonInterrupts(void)
 }
 int checkPressedButton(void)
 {
-    // PIND sisältää PORTD-pinnien hetkelliset(?) tilat 
-     // Luetaan PORTD-rekisteristä pinni 2
-    // Jos PD2 on LOW, pin 2:n nappi on painettu, sama muille 
-    if (!(PIND & (1 << PD2)))
+    if (digitalRead(2) == LOW)
     {
         return 0;
     }
-    else if (!(PIND & (1 << PD3)))
+    else if (digitalRead(3) == LOW)
     {
         return 1;
     }
-    else if (!(PIND & (1 << PD4)))
+    else if (digitalRead(4) == LOW)
     {
         return 2;
     }
-    else if (!(PIND & (1 << PD5)))
+    else if (digitalRead(5) == LOW)
     {
         return 3;
     }
@@ -53,7 +50,6 @@ ISR(PCINT2_vect)
        
         buttonPressed = true; // Merkitään, että napin painallus on havaittu
 
-       
         lastPressTime = millis(); // Tallennetaan tämänhetkinen aika millisekunteina
     }
 }
