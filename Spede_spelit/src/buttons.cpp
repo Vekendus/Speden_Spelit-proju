@@ -1,15 +1,10 @@
 #include "buttons.h"
 
-volatile int pressedButton = 0;
-
-/* 
-hieman parempi koodaustapa voisi olla käyttää const int -muuttujia pinnien määrityksenä,
-sitten viitata muuttujalla pinmodessa.
-*/
+volatile int pressedButton = -1;
 
 void initButtonsAndButtonInterrupts(void)
 {
-  // See requirements for this function from buttons.h
+
     pinMode(2, INPUT_PULLUP);
     pinMode(3, INPUT_PULLUP);
     pinMode(4, INPUT_PULLUP);
@@ -24,13 +19,42 @@ void initButtonsAndButtonInterrupts(void)
     PCMSK2 |= (1 << PCINT20);  // pin 4
     PCMSK2 |= (1 << PCINT21);  // pin 5
 }
+int checkPressedButton(void)
+{
+    // PIND sisältää PORTD-pinnien hetkelliset(?) tilat 
+     // Luetaan PORTD-rekisteristä pinni 2
+    // Jos PD2 on LOW, pin 2:n nappi on painettu, sama muille 
+    if (!(PIND & (1 << PD2)))
+    {
+        return 0;
+    }
+    else if (!(PIND & (1 << PD3)))
+    {
+        return 1;
+    }
+    else if (!(PIND & (1 << PD4)))
+    {
+        return 2;
+    }
+    else if (!(PIND & (1 << PD5)))
+    {
+        return 3;
+    }
 
+    return -1;
+}
 ISR(PCINT2_vect)
 {
-  /*
-  Käytä booleania, jolla tunnistetaan, että jonkin napin tila on muuttunut.
-  Ota aikaleima millis()-funktiolla. Aikaleiman avulla voidaan pelissä määrittää, onko kyse värähtelystä vai 
-  */
+ 
+   pressedButton = checkPressedButton(); // Selvitetään, mikä nappi aiheutti keskeytyksen
+  
+    if (pressedButton != -1)// Tarkistetaan, löytyikö painettu nappi
+    {
+       
+        buttonPressed = true; // Merkitään, että napin painallus on havaittu
+
+       
+        lastPressTime = millis(); // Tallennetaan tämänhetkinen aika millisekunteina
+    }
 }
 
-/* Tarkista myös buttons.h lisähuomiot! */
