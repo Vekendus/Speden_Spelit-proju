@@ -17,4 +17,7 @@ HUOM! Argumenttina otettu taulukko on osoitin ensimmäiseen alkioon, joten tarvi
 */
 void updateScores(int score, int position);
 
+//Nollataan pistetilasto
+void resetScores(void);
+
 #endif
