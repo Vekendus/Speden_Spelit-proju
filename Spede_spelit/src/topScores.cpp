@@ -36,3 +36,11 @@ void updateScores(int score, int position)
     EEPROM.put(address, score);
   
 }
+
+void resetScores(void)
+{
+  //käydään EEPROM:n kaikki bitit läpi.
+  for (int i = 0 ; i < EEPROM.length() ; i++) {
+    EEPROM.write(i, 0);
+  }
+}
