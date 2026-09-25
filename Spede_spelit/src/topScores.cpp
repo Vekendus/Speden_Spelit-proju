@@ -4,6 +4,7 @@
 /**************************************************************/
 /* This code if for an Arduino school project.                */
 /* Code reads top scores from EEPROM and updates top scores.  */
+/* In EEPROM address 0 is the best result.                    */
 /* Written by: Niko Siironen, 2026.                           */
 /**************************************************************/
 
@@ -13,7 +14,7 @@ void readScores(int scores[], size_t listSize)
   size_t address=0; //käytetään EEPROM:n muistipaikkana
   size_t itemSize;
 
-  //selvitetään taulukon alkioiden koko, jotta osataan tallentaa oikein EEPROM-muistiin
+  //selvitetään taulukon alkioiden koko tavuina, jotta osataan tallentaa oikein EEPROM-muistiin.
   itemSize = sizeof(scores[0]); 
 
   for(i=0; i< listSize; i++)
