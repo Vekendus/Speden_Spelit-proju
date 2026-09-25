@@ -24,7 +24,7 @@ void readScores(int scores[], size_t listSize)
   }
 }
 
-void updateScores(int score, int position)
+void updateScores(int score, int index)
 {
   size_t address=0; //käytetään EEPROM:n muistipaikan osoittamiseen
   size_t itemSize;
@@ -32,7 +32,7 @@ void updateScores(int score, int position)
   //otetaan scoren koko oikeaan muistipaikkaan kirjoittamista varten
   itemSize = sizeof(score);
 
-    address = position*itemSize;
+    address = index*itemSize;
     EEPROM.put(address, score);
   
 }
