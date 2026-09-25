@@ -1,6 +1,12 @@
 #include "topScores.h"
 #include <EEPROM.h>
 
+/**************************************************************/
+/* This code if for an Arduino school project.                */
+/* Code reads top scores from EEPROM and updates top scores.  */
+/* Written by: Niko Siironen, 2026.                           */
+/**************************************************************/
+
 void readScores(int scores[], size_t listSize)
 {
   size_t i=0;
