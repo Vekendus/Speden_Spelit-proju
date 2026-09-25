@@ -12,10 +12,9 @@ void readScores(int scores[], size_t listSize);
 
 /*
 updateScores-funktio päivittää pisteet EEPROM:iin.
-Funktio ottaa argumenttina taulukon, josta tiedot päivitetään, sekä taulukon koon.
-HUOM! Argumenttina otettu taulukko on osoitin ensimmäiseen alkioon, joten tarvitaan myös koko.
+Funktio ottaa argumenttina pistemäärän, sekä pistetaulukon indeksin.
 */
-void updateScores(int score, int position);
+void updateScores(int score, int index);
 
 //Nollataan pistetilasto
 void resetScores(void);
