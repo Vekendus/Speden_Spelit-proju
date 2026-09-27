@@ -2,6 +2,15 @@
 
 volatile int pressedButton = -1;
 
+// Kertoo, onko napin painallus havaittu
+bool buttonPressed = false;
+
+// Tallentaa viimeisimmän painalluksen ajan millisekunteina
+unsigned long lastPressTime = 0;
+
+// Debounce-aika millisekunteina, varmaankin 50ms on riittävä aikaväli (?)
+const int debounceTime = 50;
+
 void initButtonsAndButtonInterrupts(void)
 {
 
@@ -45,12 +54,15 @@ ISR(PCINT2_vect)
  
    pressedButton = checkPressedButton(); // Selvitetään, mikä nappi aiheutti keskeytyksen
   
-    if (pressedButton != -1)// Tarkistetaan, löytyikö painettu nappi
+      // Tarkistetaan, löytyikö painettu nappi
+    // ja onko edellisestä hyväksytystä painalluksesta kulunut tarpeeksi aikaa
+    if (pressedButton != -1 && millis() - lastPressTime > debounceTime)
     {
-       
-        buttonPressed = true; // Merkitään, että napin painallus on havaittu
+        // Merkitään, että napin painallus on havaittu
+        buttonPressed = true;
 
-        lastPressTime = millis(); // Tallennetaan tämänhetkinen aika millisekunteina
+        // Tallennetaan tämänhetkinen aika millisekunteina
+        lastPressTime = millis();
     }
 }
 
