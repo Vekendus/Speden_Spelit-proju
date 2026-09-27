@@ -36,6 +36,13 @@ void initializeDisplay(void)
 
   // Enabloi output (LOW = enabled)
   digitalWrite(PIN_OUTENABLE, LOW);
+  
+  //Näyttää 8 molemmilla segmenttinäytöillä 500ms delaylla
+  writeHighAndLowNumber(8, 8);
+  delay(500);
+  
+  //Nollaa näytöt
+  writeHighAndLowNumber(0 , 0);
 }
 
 
@@ -47,7 +54,6 @@ void writeByte(uint8_t number, bool last)
   for (int i = 7; i >= 0; i--) {      // Siirtää 8 bittiä siirtorekisteriin
     bool bitVal = (bits >> i) & 1;
     digitalWrite(PIN_SERIALIN, bitVal);
-
     
     digitalWrite(PIN_SHIFTCLK, HIGH);
     digitalWrite(PIN_SHIFTCLK, LOW);
@@ -63,8 +69,8 @@ void writeByte(uint8_t number, bool last)
 
 void writeHighAndLowNumber(uint8_t tens, uint8_t ones)
 {
-  writeByte(ones, false);
-  writeByte(tens, true);
+  writeByte(tens, false);
+  writeByte(ones, true);
 }
 
 void showResult(byte result)
