@@ -51,18 +51,19 @@ int checkPressedButton(void)
 }
 ISR(PCINT2_vect)
 {
- 
-   pressedButton = checkPressedButton(); // Selvitetään, mikä nappi aiheutti keskeytyksen
-  
-      // Tarkistetaan, löytyikö painettu nappi
-    // ja onko edellisestä hyväksytystä painalluksesta kulunut tarpeeksi aikaa
-    if (pressedButton != -1 && millis() - lastPressTime > debounceTime)
-    {
         // Merkitään, että napin painallus on havaittu
         buttonPressed = true;
 
         // Tallennetaan tämänhetkinen aika millisekunteina
         lastPressTime = millis();
+}
+
+bool deboucne()
+{
+    long currentTime= millis();
+    if(currentTime-lastPressTime>deboucneTime){
+        return true;
     }
+    return false;
 }
 
