@@ -45,6 +45,28 @@ void initializeDisplay(void)
   writeHighAndLowNumber(0 , 0);
 }
 
+void showTopFive(const uint8_t scores[5])   // Top5 korkeimmat pisteet pyörii näytöillä
+{
+  for (int i = 0; i < 5; i++) 
+  {
+    uint8_t tens = scores[i] / 10;
+    uint8_t ones = scores[i] % 10;
+
+    writeHighAndLowNumber(tens, ones);
+    delay(1000);
+  }
+}
+
+void showCountdown()    //Countdown kun peli on alkamassa
+{
+  for (int i = 3; i >= 1; i--) {
+    writeHighAndLowNumber(0, i);
+    delay(1000);
+  }
+
+  writeHighAndLowNumber(0, 0);
+  delay(300);
+}
 
 void writeByte(uint8_t number, bool last)
 {
