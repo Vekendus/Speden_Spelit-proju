@@ -22,6 +22,8 @@ vaihdetaan pisteet näytölle.
 Napin painaminen breakaa ulos while-loopista.
 Jatkuvasti pyörivän while-loopin voi tehdä esim.
 while(1){}
+While-silmukassa näytetään vuorotellen show1 ja show2
+ja aina show'n vaihtuessa vaihdetaan pisteet näytölle.
 */
 void startMenu(void);
 
