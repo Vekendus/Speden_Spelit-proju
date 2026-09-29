@@ -61,7 +61,7 @@ ISR(PCINT2_vect)
 bool debounce()
 {
     long currentTime= millis();
-    if(currentTime-lastPressTime>deboucneTime){
+    if(currentTime-lastPressTime>debouncneTime){
         return true;
     }
     return false;
