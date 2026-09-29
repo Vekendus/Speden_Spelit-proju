@@ -29,5 +29,7 @@ void writeHighAndLowNumber(uint8_t tens,uint8_t ones);
   Välitä tulokset writeHighAndLowNumber()-funktiolle
 */
 void showResult(byte result);
+void showCountdown(void);
+void showTopFive(const uint8_t scores[5]);
 
 #endif
