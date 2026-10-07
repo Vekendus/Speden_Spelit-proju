@@ -1,4 +1,4 @@
-#include menu.h
+#include "menu.h"
 
 extern void showCountdown();
 extern void showTopFive(const uint8_t scores[5]);
@@ -20,7 +20,7 @@ void initializeMenu()
     timerFLAG = false;
 
     for (int i = 0; i < 5; i++) {
-        topFiveScores[i] = EEPROM.read(i);
+        topScores[i] = EEPROM.read(i);
     }
 
     startMenu();
@@ -49,7 +49,7 @@ void startMenu()
 
             writeHighAndLowNumber(tens, ones);
 
-            index++
+            index++;
             if (index >= 5) {
                 index = 0;
             }
