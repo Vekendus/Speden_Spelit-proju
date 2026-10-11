@@ -23,6 +23,7 @@ void initializeMenu()
   if(topScores[4]==255)
   {
     resetScores();
+    readScores(topScores, 5);
   }
     TCCR1A = 0;                 // Normaali porttitoiminta
   TCCR1B = 0;
