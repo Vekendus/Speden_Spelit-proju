@@ -20,6 +20,10 @@ void initializeMenu()
     timerFLAG = false;
 
     readScores(topScores, 5);
+  if(topScores[4]==255)
+  {
+    resetScores();
+  }
     TCCR1A = 0;                 // Normaali porttitoiminta
   TCCR1B = 0;
   TCNT1  = 0;
