@@ -25,6 +25,7 @@ void initializeMenu()
     resetScores();
     readScores(topScores, 5);
   }
+  cli();
     TCCR1A = 0;                 // Normaali porttitoiminta
   TCCR1B = 0;
   TCNT1  = 0;
@@ -33,6 +34,7 @@ void initializeMenu()
   TCCR1B |= (1 << WGM12);     // CTC-tila
   TCCR1B |= (1 << CS12) | (1 << CS10); // Esijakaja 1024
   TIMSK1 |= (1 << OCIE1A);    // Salli vertailukeskeytys A
+  sei();
 }
 
 void startMenu()
